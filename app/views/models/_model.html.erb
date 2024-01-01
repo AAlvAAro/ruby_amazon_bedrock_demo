@@ -1,0 +1,27 @@
+<div id="<%= dom_id model %>">
+  <p class="my-5">
+    <strong class="block font-bold mb-1">Name:</strong>
+    <%= model.name %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-bold mb-1">Description:</strong>
+    <%= model.description %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-bold mb-1">Documentation url:</strong>
+    <%= link_to model.documentation_url, model.documentation_url, target: 'blank' %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-bold mb-1">Model provider:</strong>
+    <%= model.model_provider.name %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "Show this model", [@model_provider, model], class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "Edit this model", edit_model_provider_model_path(@model_provider, model), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>
