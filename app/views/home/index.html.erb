@@ -17,18 +17,18 @@
   <p class="mt-2 font-bold text-gray-900 text-center text-4xl sm:text-5xl">Ruby Amazon Bedrock Demo</p>
 
   <div class="mt-10 columns-2">
-    <div data-controller="model-select">
-      <label for="location" class="block text-sm font-medium leading-6 text-gray-900">Select a Provider</label>
-      <%= select :model_provider, :model_provider_id, ModelProvider.all.collect {|p| [p.name, p.id]}, {}, class: 'mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6', "data-action": "model-select#change", "data-model-select-target": "select" %>
+    <div data-controller="model-provider-select">
+      <label for="model_provider" class="block text-sm font-medium leading-6 text-gray-900">Select a Provider</label>
+      <%= select :model_provider, :model_provider_id, ModelProvider.all.collect {|p| [p.name, p.id]}, {}, class: 'mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6', data: { action: "model-provider-select#change", model_provider_select_target: "select" } %>
+
+      <%= turbo_frame_tag 'model_collection' do %>
+        <div id="models" class="invisible">
+          <label for="model" class="block text-sm font-medium leading-6 text-gray-900">Select a Model</label>
+          <select id="model" name="location" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
+          </select>
+        </div>
+      <% end %>
     </div>
-
-    <label for="location" class="block text-sm font-medium leading-6 text-gray-900">Select a Model</label>
-
-    <select id="location" name="location" class="mt-2 block w-full rounded-md border-0 py-1.5 pl-3 pr-10 text-gray-900 ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-indigo-600 sm:text-sm sm:leading-6">
-      <option>Amazon Titan Text Lite</option>
-      <option selected>Amazon Titan Text Express</option>
-      <option>Amazon Titan Image</option>
-    </select>
   </div>
 
   <div class="mt-10">

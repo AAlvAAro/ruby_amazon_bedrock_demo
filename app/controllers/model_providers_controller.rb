@@ -1,5 +1,5 @@
 class ModelProvidersController < ApplicationController
-  before_action :set_model_provider, only: %i[ show edit update destroy ]
+  before_action :set_model_provider, only: %i[show edit update destroy models]
 
   # GET /model_providers or /model_providers.json
   def index
@@ -7,8 +7,7 @@ class ModelProvidersController < ApplicationController
   end
 
   # GET /model_providers/1 or /model_providers/1.json
-  def show
-  end
+  def show; end
 
   # GET /model_providers/new
   def new
@@ -16,8 +15,7 @@ class ModelProvidersController < ApplicationController
   end
 
   # GET /model_providers/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /model_providers or /model_providers.json
   def create
@@ -25,7 +23,9 @@ class ModelProvidersController < ApplicationController
 
     respond_to do |format|
       if @model_provider.save
-        format.html { redirect_to model_provider_url(@model_provider), notice: "Model provider was successfully created." }
+        format.html do
+          redirect_to model_provider_url(@model_provider), notice: 'Model provider was successfully created.'
+        end
         format.json { render :show, status: :created, location: @model_provider }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -34,11 +34,12 @@ class ModelProvidersController < ApplicationController
     end
   end
 
-  # PATCH/PUT /model_providers/1 or /model_providers/1.json
   def update
     respond_to do |format|
       if @model_provider.update(model_provider_params)
-        format.html { redirect_to model_provider_url(@model_provider), notice: "Model provider was successfully updated." }
+        format.html do
+          redirect_to model_provider_url(@model_provider), notice: 'Model provider was successfully updated.'
+        end
         format.json { render :show, status: :ok, location: @model_provider }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -52,19 +53,28 @@ class ModelProvidersController < ApplicationController
     @model_provider.destroy!
 
     respond_to do |format|
-      format.html { redirect_to model_providers_url, notice: "Model provider was successfully destroyed." }
+      format.html { redirect_to model_providers_url, notice: 'Model provider was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_model_provider
-      @model_provider = ModelProvider.find(params[:id])
-    end
+  def models
+    @models = @model_provider.models
 
-    # Only allow a list of trusted parameters through.
-    def model_provider_params
-      params.require(:model_provider).permit(:name, :description, :documentation_url)
+    respond_to do |format|
+      format.turbo_stream
     end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_model_provider
+    @model_provider = ModelProvider.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def model_provider_params
+    params.require(:model_provider).permit(:name, :description, :documentation_url)
+  end
 end
