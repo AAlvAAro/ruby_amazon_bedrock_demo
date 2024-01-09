@@ -1,5 +1,5 @@
 class ModelsController < ApplicationController
-  before_action :set_model_provider
+  before_action :set_model_provider, except: :show
   before_action :set_model, only: %i[show edit update destroy]
 
   # GET /models or /models.json
@@ -8,7 +8,13 @@ class ModelsController < ApplicationController
   end
 
   # GET /models/1 or /models/1.json
-  def show; end
+  def show
+    @model = Model.find(params[:id])
+
+    respond_to do |format|
+      format.turbo_stream
+    end
+  end
 
   # GET /models/new
   def new

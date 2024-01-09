@@ -1,0 +1,23 @@
+<%= turbo_stream.update 'model_description' do %>
+	<p class="mt-8 text-sm font-light">
+		<%= @model.description %>
+	</p>
+	<p class="text-sm font-light">
+		You can see more information about this model <a href="<%= @model.documentation_url %>" target="_blank" class="text-blue-600">here</a>.
+	</p>
+<% end %>
+
+<%= turbo_stream.update 'prompt_textarea' do %>
+    <div class="mt-10">
+      <label for="prompt" class="block text-lg font-medium leading-6 text-gray-900">Write your prompt here:</label>
+      <div class="mt-2">
+        <%= turbo_frame_tag 'prompt' do %>
+          <textarea class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" placeholder="Write your prompt here ..." rows="4" required="required" name="results[prompt]"></textarea>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="text-right mt-10" data-controller="generate-content">
+      <%= submit_tag 'Generate', class: 'rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+    </div>
+<% end %>

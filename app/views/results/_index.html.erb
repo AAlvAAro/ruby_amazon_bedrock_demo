@@ -1,0 +1,18 @@
+<p class="mt-8 mb-4 font-bold text-gray-900 text-center"><%= prompt %>: </p>
+<p class="font-semibold text-gray-900 text-center hidden" id="result-text"><%= text %></p>
+
+<%= javascript_tag do %>
+  var i = 0;
+  var txt = document.getElementById("result-text").innerHTML;
+  var speed = 20; /* The speed/duration of the effect in milliseconds */
+
+  function typeWriter() {
+    if (i < txt.length) {
+      document.getElementById("result").innerHTML += txt.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  typeWriter()
+<% end %>
