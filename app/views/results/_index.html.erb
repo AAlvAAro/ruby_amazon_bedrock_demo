@@ -1,18 +1,27 @@
-<p class="mt-8 mb-4 font-bold text-gray-900 text-center"><%= prompt %>: </p>
-<p class="font-semibold text-gray-900 text-center hidden" id="result-text"><%= text %></p>
+<div class="mb-4 mt-10 relative">
+  <div class="absolute inset-0 flex items-center" aria-hidden="true">
+    <div class="w-full border-t border-gray-300"></div>
+  </div>
+  <div class="relative flex justify-start">
+    <span class="bg-white pr-3 text-base font-semibold leading-6 text-gray-900">Your Prompt: <%= prompt %></span>
+  </div>
+</div>
+<div class="mb-8">
+  <p class="font-semibold text-gray-900 text-center hidden" id="result-text"><%= text %></p>
+</div>
 
 <%= javascript_tag do %>
   var i = 0;
   var txt = document.getElementById("result-text").innerHTML;
   var speed = 20; /* The speed/duration of the effect in milliseconds */
 
-  function typeWriter() {
+  function write() {
     if (i < txt.length) {
       document.getElementById("result").innerHTML += txt.charAt(i);
       i++;
-      setTimeout(typeWriter, speed);
+      setTimeout(write, speed);
     }
   }
 
-  typeWriter()
+  write()
 <% end %>

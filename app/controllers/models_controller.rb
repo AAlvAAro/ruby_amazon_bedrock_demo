@@ -5,6 +5,10 @@ class ModelsController < ApplicationController
   # GET /models or /models.json
   def index
     @models = @model_provider.models
+
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   # GET /models/1 or /models/1.json

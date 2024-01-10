@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_01_09_083652) do
+ActiveRecord::Schema[7.1].define(version: 2024_01_10_070955) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "model_providers", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "documentation_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,6 +29,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_01_09_083652) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "bedrock_model_id"
+    t.string "kind", default: "text", null: false
     t.index ["model_provider_id"], name: "index_models_on_model_provider_id"
   end
 

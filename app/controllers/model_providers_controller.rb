@@ -75,6 +75,6 @@ class ModelProvidersController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def model_provider_params
-    params.require(:model_provider).permit(:name, :description, :documentation_url)
+    params.require(:model_provider).permit(:name, :description)
   end
 end

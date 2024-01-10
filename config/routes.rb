@@ -5,11 +5,8 @@ Rails.application.routes.draw do
 
   resources :results, only: :index
 
-  resources :model_providers do
-    member do
-      get :models
-      get :model
-    end
+  resources :model_providers, only: [] do
+    resources :models, only: :index
   end
 
   resources :models, only: :show
