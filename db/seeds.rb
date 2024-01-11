@@ -1,18 +1,18 @@
 MODEL_PROVIDERS = [
   {
     name: 'AI21 Labs',
-    description: "Businesses use AI21's Jurassic family of leading LLMs to build generative AI-driven applications and services leveraging existing organizational data. Jurassic supports cross-industry use cases including long and short-form text generation, contextual question answering, summarization, and classification. Designed to follow natural language instructions, Jurassic is trained on a massive corpus of web text and supports six languages in addition to English.",
+    description: "Businesses use AI21's Jurassic family of leading LLMs to build generative AI-driven applications and services leveraging existing organizational data. Jurassic supports cross-industry use cases including long and short-form text generation, contextual question answering, summarization, and classification. Designed to follow natural language instructions, Jurassic is trained on a massive corpus of web text and supports six languages in addition to English",
     models: [
       {
         name: 'Jurassic-2 Ultra',
-        description: 'Supports: Open book question answering, summarization, draft generation, information extraction, ideation',
-        documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=ai21.j2-ultra-v1',
+        description: 'Supports: Open book question answering, summarization, draft generation, information extraction, ideation.',
+        documentation_url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-jurassic2.html',
         bedrock_model_id: 'ai21.j2-ultra-v1'
       },
       {
         name: 'Jurassic-2 Mid',
-        description: 'Supports: Open book question answering, summarization, draft generation, information extraction, ideation',
-        documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=ai21.j2-mid-v1',
+        description: 'Supports: Open book question answering, summarization, draft generation, information extraction, ideation.',
+        documentation_url: 'https://docs.aws.amazon.com/bedrock/latest/userguide/model-parameters-jurassic2.html',
         bedrock_model_id: 'ai21.j2-mid-v1'
       }
     ]
@@ -31,7 +31,7 @@ MODEL_PROVIDERS = [
         name: 'Titan Text G1 - Express',
         description: 'Supports: Text generation, Code generation, Rich text formatting, Orchestration (Agents), Fine Tuning.',
         documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=amazon.titan-text-express-v1',
-        bedrock_model_id: 'amazon.titan-text-express-v1'
+        bedrock_model_id: 'ai21.j2-mid-v1'
       }
     ]
   },
@@ -74,12 +74,6 @@ MODEL_PROVIDERS = [
         description: 'Supports: Summarization, copywriting, dialogue, extraction, and question answering.',
         documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=cohere.command-light-text-v14',
         bedrock_model_id: 'cohere.command-light-text-v14'
-      },
-      {
-        name: 'Claude 2',
-        description: 'Supports: Question answering, information extraction, removing PII, content generation, multiple choice classification, Roleplay, comparing text, summarization, document Q&A with citation.',
-        documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=anthropic.claude-v2',
-        bedrock_model_id: 'anthropic.claude-v2'
       }
     ]
   },
@@ -109,15 +103,13 @@ MODEL_PROVIDERS = [
         name: 'SDXL 0.8',
         description: 'Supports: image generation, image editing',
         documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v0',
-        bedrock_model_id: 'stability.stable-diffusion-xl-v0',
-        kind: 'image'
+        bedrock_model_id: 'stability.stable-diffusion-xl-v0'
       },
       {
         name: 'SDXL 1.0',
         description: 'Supports: image generation, image editing',
-        documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v1',
-        bedrock_model_id: 'stability.stable-diffusion-xl-v1',
-        kind: 'image'
+        documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v0',
+        bedrock_model_id: 'stability.stable-diffusion-xl-v1'
       }
     ]
   }
