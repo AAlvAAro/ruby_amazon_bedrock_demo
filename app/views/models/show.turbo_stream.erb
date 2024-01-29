@@ -1,6 +1,6 @@
 <%= turbo_stream.update 'model_description' do %>
   <p class="mt-8 text-sm font-light">
-    <%= @model.description %>
+    <%= @model.name %> <%= @model.description %>
   </p>
   <p class="text-sm font-light">
     You can see more information about this model <a href="<%= @model.documentation_url %>" target="_blank" class="text-blue-600">here</a>.
