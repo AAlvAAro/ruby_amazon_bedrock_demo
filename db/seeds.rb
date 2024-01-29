@@ -103,22 +103,25 @@ MODEL_PROVIDERS = [
         name: 'SDXL 0.8',
         description: 'Supports: image generation, image editing',
         documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v0',
-        bedrock_model_id: 'stability.stable-diffusion-xl-v0'
+        bedrock_model_id: 'stability.stable-diffusion-xl-v0',
+        kind: 'image'
       },
       {
         name: 'SDXL 1.0',
         description: 'Supports: image generation, image editing',
         documentation_url: 'https://us-east-1.console.aws.amazon.com/bedrock/home?region=us-east-1#/providers?model=stability.stable-diffusion-xl-v0',
-        bedrock_model_id: 'stability.stable-diffusion-xl-v1'
+        bedrock_model_id: 'stability.stable-diffusion-xl-v1',
+        kind: 'image'
       }
     ]
   }
 ]
 
 MODEL_PROVIDERS.each do |model_provider|
-  ModelProvider.create!(name: model_provider[:name], description: model_provider[:description])
+  bedrock_model_provider = ModelProvider.create!(name: model_provider[:name], description: model_provider[:description])
   model_provider[:models].each do |model|
-    Model.create!(name: model[:name], description: model[:description], documentation_url: model[:documentation_url],
-                  bedrock_model_id: model[:bedrock_model_id], model_provider_id: ModelProvider.last.id)
+    bedrock_model = Model.new(model)
+    bedrock_model.model_provider_id = bedrock_model_provider.id
+    bedrock_model.save!
   end
 end

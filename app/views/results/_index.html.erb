@@ -5,6 +5,10 @@
       <!-- Content goes here -->
       <div class="overflow-hidden rounded-lg bg-white shadow">
         <div class="px-4 py-5 sm:p-6">
+          <div class="mb-8">
+            <h3 class="text-base font-semibold text-gray-900">Prompt:</h3>
+            <%= prompt %>
+          </div>
           <h3 class="text-base font-semibold text-gray-900">Result:</h3>
           <% if s3_url %>
             <%= image_tag s3_url %> 

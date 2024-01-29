@@ -2,7 +2,10 @@ class ResultsController < ApplicationController
   def index
     model = Model.find(params.dig(:model, :model_id))
 
-    options = params.dig(:results, :options) || {}
+    options = {
+      temperature: 0.9,
+      max_tokens: 1256
+    }
     options.merge!(upload: true) if model.kind == 'image'
 
     response = $amazon_bedrock_client.invoke_model(
